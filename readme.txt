@@ -1,6 +1,6 @@
 Git is a version control system.
 Git is free software.
 what is a branch ?
-How hard is that ? 
+How hard is That ? 
 anything has changed.
 what is the problem?
