@@ -14,7 +14,7 @@ class Solution{
             return index + 1;
         }
         int removeDuplicate1(vector<int>& nums){
-            return distance(nums.begin(),unique(nums.begin(),nums.end()));
+            return distance(nums.begin(),unique(nums.begin(),nums.end() ));
         }
 };
 int main(){
