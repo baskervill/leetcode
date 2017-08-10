@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <unordered_map>
 using namespace std;
 class Solution {
 public:
@@ -24,11 +25,40 @@ public:
         }
         return max + 1;
     }
+    int longestConsecutive2(vector<int>& nums){
+        unordered_map<int,bool> used;
+        int max = 0,length = 0;
+        /*
+        for(vector<int>::iterator iter = nums.begin();iter != nums.end();iter++){
+            used[*iter] = false;
+        }
+        */
+        for(auto i : nums) used[i] = false;
+        for(int i = 0; i<nums.size();i++){
+            if(used[nums[i]] != true){
+                used[nums[i]] = true;
+                int j = 1, k = 1;
+                while(used.find(nums[i]+j) != used.end() ){
+                    used[nums[i]+j] = true;
+                    j++;
+                }
+                while(used.find(nums[i]-k) != used.end()){
+                    used[nums[i] - k] = true;
+                    k++;
+                }
+                length = j+k-1;
+                if(max < length) max = length;
+            }
+
+        }
+        return max;
+    }
+    
 };
 int main(){
     Solution s;
     int a[] = {1,2,0,1};
     vector<int> nums(a,a+4);
-    int length = s.longestConsecutive(nums);
+    int length = s.longestConsecutive2(nums);
     cout<<length<<endl;
 }
